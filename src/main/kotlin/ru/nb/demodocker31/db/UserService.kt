@@ -13,4 +13,8 @@ class UserService(
 		return userRepo.findAll()
 	}
 
+	fun insert(userEntity: UserEntity) {
+		userRepo.save(userEntity)
+	}
+
 }
