@@ -1,0 +1,5 @@
+kind delete cluster
+kind create cluster --config kind-config.yaml
+
+docker run -ti --rm -e DATA_HOST='postgres' --network md_net -p 8080:8080 --name cat-c 8881981/cat:1
+docker rmi 8881981/cat:1
