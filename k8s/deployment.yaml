@@ -10,12 +10,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
+      # (1) link :
       app: cats-api
 
 #      параметры запуска:
   template:
     metadata:
       labels:
+        # (1) link ^
         app: cats-api
     spec:
       containers:

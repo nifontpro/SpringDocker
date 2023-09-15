@@ -1,5 +1,6 @@
-https://www.youtube.com/watch?v=KPLJ0i5Ocws
 https://youtu.be/H-OwFku5L1A
+https://www.youtube.com/watch?v=KPLJ0i5Ocws
+https://youtu.be/3aOBXGE9HwE
 
 docker run -ti --rm -e DATA_HOST='postgres' --network md_net -p 8080:8080 --name cat-c 8881981/cat:1
 docker rmi 8881981/cat:1
@@ -23,6 +24,9 @@ kubectl wait --namespace ingress-nginx \
   --selector=app.kubernetes.io/component=controller \
   --timeout=90s
 kubectl apply -f k8s/ingress.yaml
+kubectl describe ingress nifont
+kubectl describe pod ...
+kubectl get replicaset
 
 ipconfig getifaddr en0
 192.168.0.10
