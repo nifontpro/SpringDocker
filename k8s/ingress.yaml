@@ -1,0 +1,34 @@
+#https://kubernetes.io/docs/concepts/services-networking/ingress/
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nifont
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+#  ingressClassName: nginx-example
+  rules:
+    - http:
+        paths:
+          - path: /cats-api
+            pathType: Prefix
+#            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: cats-api
+                port:
+                  number: 80
+#          - path: /jokes
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: jokes
+#                port:
+#                  number: 80
+#          - path: /spring-admin
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: spring-admin
+#                port:
+#                  number: 80

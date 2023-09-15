@@ -4,11 +4,15 @@ metadata:
   name: cats-api
   labels:
     app: cats-api
+
+# Запустить в 3х экземплярах те приложения, которые имеют метку cats-api
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: cats-api
+
+#      параметры запуска:
   template:
     metadata:
       labels:
@@ -16,6 +20,13 @@ spec:
     spec:
       containers:
         - name: cats-api
-          image: nginx:1.14.2
+          image: 8881981/cat:1
           ports:
-            - containerPort: 80
+            - containerPort: 8080
+          env:
+            - name: DATA_HOST
+              value: 192.168.0.10
+#            - name: spring.mvc.servlet.path
+#              value: /cats-api
+            - name: PREFIX_URL
+              value: /cats-api

@@ -1,5 +1,28 @@
-kind delete cluster
-kind create cluster --config kind-config.yaml
+https://www.youtube.com/watch?v=KPLJ0i5Ocws
+https://youtu.be/H-OwFku5L1A
 
 docker run -ti --rm -e DATA_HOST='postgres' --network md_net -p 8080:8080 --name cat-c 8881981/cat:1
 docker rmi 8881981/cat:1
+
+kind delete cluster
+kind create cluster --config kind-config.yaml
+
+kubectl apply -f k8s/deployment.yaml
+kubectl get pods
+kubectl get pods -w
+kubectl delete pods --all // not works, restart
+kubectl delete deployments --all
+kubectl logs ...
+kubectl port-forward cats-api-7b7494d4db-krrv8  8899:8080
+kubectl apply -f k8s/service.yaml
+kubectl get service
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+kubectl wait --namespace ingress-nginx \
+  --for=condition=ready pod \
+  --selector=app.kubernetes.io/component=controller \
+  --timeout=90s
+kubectl apply -f k8s/ingress.yaml
+
+ipconfig getifaddr en0
+192.168.0.10
