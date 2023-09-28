@@ -1,0 +1,21 @@
+jib {
+//    container.creationTime = 'USE_CURRENT_TIMESTAMP'
+    from {
+//        image = 'bellsoft/bellsoft/liberica-openjdk-alpine-musl:17.0.7-7'
+        image = 'bellsoft/bellsoft/liberica-openjdk-alpine-musl:17.0.1-12'
+    }
+    to {
+        tags = ['v3', 'latest']
+        image = '8881981/br:1'
+//        auth {
+//            username = gitlabUser
+//            password = gitlabPassword
+//        }
+    }
+}
+// ./gradlew jibDockerBuild
+
+//docker login registry.gitlab.com
+//docker run -p 8080:8080 registry.gitlab.com/petrelevich/dockerregistry/currencyRateClient
+
+//docker push registry.gitlab.com/petrelevich/dockerregistry/currencyRateClient:latest

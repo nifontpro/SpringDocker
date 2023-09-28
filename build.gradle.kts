@@ -3,10 +3,21 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "3.1.3"
 	id("io.spring.dependency-management") version "1.1.3"
+	// https://github.com/peter-evans/kotlin-jib
+	id("com.google.cloud.tools.jib") version "3.3.2"
 	kotlin("jvm") version "1.8.22"
 	kotlin("plugin.spring") version "1.8.22"
 	kotlin("plugin.jpa") version "1.8.22"
 	kotlin("plugin.allopen") version "1.8.22"
+}
+
+jib {
+	from {
+		image = "openjdk:18"
+	}
+	to {
+		image = "8881981/br:1"
+	}
 }
 
 allOpen {
@@ -31,8 +42,11 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+//	implementation("org.springframework.boot:spring-boot-starter-mail")
+	implementation("org.apache.commons:commons-email:1.5")
 
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	runtimeOnly("org.postgresql:postgresql")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -1,0 +1,10 @@
+GET http://localhost:8090/actuator/health
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+###
+GET http://localhost:8090/actuator/health/liveness
+
+###
+GET http://localhost:8090/actuator/health/readiness

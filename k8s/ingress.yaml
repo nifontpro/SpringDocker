@@ -10,7 +10,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /cats-api
+          - path: /cats
             pathType: Prefix
 #            pathType: ImplementationSpecific
             backend:
